@@ -31,7 +31,7 @@ The player is placed in a maze on an 8x8 LED matrix and tries to reach the exit.
 - If there is a wall: Buzzer beeps, movement is canceled
 - If the exit is reached: All LEDs flash → "You have won"
 
-# Software Structure
+## Software Structure
 
 Labyrinth Definition
 
@@ -46,4 +46,17 @@ uint8_t maze[8] = {
     0b10101111,
     0b10000000
 };
+```
+
+Player Control
+
+```c
+void movePlayer(Direction dir) {
+    if (isMoveValid(playerX, playerY, dir)) {
+        updatePlayerPosition(dir);
+        updateDisplay();
+    } else {
+        buzzError();
+    }
+}
 ```
