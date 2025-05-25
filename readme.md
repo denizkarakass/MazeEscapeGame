@@ -18,3 +18,32 @@ The player is placed in a maze on an 8x8 LED matrix and tries to reach the exit.
 - Direction buttons → PORTB (RB0-RB3)
 - Reset button → RB4
 - Buzzer (optional) → RD0
+
+## Software Features
+
+- Player position at startup: Top left corner (0,0)
+- End point: Bottom right corner (7,7) - or random
+- Labyrinth walls: With fixed/predefined or randomized patterns
+
+## Game logic:
+
+- When the directional buttons are pressed, the player takes a step in that direction
+- If there is a wall: Buzzer beeps, movement is canceled
+- If the exit is reached: All LEDs flash → "You have won"
+
+# Software Structure
+
+Labyrinth Definition
+
+```c
+uint8_t maze[8] = {
+    0b01111110,
+    0b00010000,
+    0b11110111,
+    0b10000001,
+    0b10111101,
+    0b10100001,
+    0b10101111,
+    0b10000000
+};
+```
